@@ -1,3 +1,5 @@
+import os
+from pathlib import Path
 import joblib
 import pandas as pd
 from fastapi import FastAPI
@@ -5,7 +7,8 @@ from pydantic import BaseModel, Field
 from typing import Literal
 from fastapi.middleware.cors import CORSMiddleware
 
-model = joblib.load('Mental_Health_Model.pkl')
+MODEL_PATH = Path(__file__).resolve().parent / "Mental_Health_Model.pkl"
+model = joblib.load(MODEL_PATH)
 top_countries = ['Other','India','USA','Canada','Australia','UK','Germany','Mexico','Turkey','France']
 
 app = FastAPI()
@@ -46,7 +49,12 @@ class PredictionResponse(BaseModel):
 
 @app.get('/')
 def greet():
-    return {'Welcome!!'}
+    return {"message": "Mental Health Prediction API is running"}
+
+
+@app.get('/health')
+def health():
+    return {"status": "ok", "model_loaded": model is not None}
 
 
 @app.post('/predict', response_model=PredictionResponse) #6.77777

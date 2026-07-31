@@ -1,5 +1,4 @@
-const API_BASE_URL = 'https://mental-health-prediction-msd4.onrender.com'
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mental-health-prediction-msd4.onrender.com'
 /**
  * Custom error so the UI can tell network failures apart from
  * server-side validation/processing errors.
