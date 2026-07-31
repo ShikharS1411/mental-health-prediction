@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://127.0.0.1:8000'
+const API_BASE_URL = 'https://mental-health-prediction-msd4.onrender.com'
 
 /**
  * Custom error so the UI can tell network failures apart from
@@ -44,7 +44,7 @@ export async function predictMentalHealth(payload) {
     })
   } catch (err) {
     throw new ApiError(
-      'Could not reach the prediction server. Make sure the FastAPI backend is running on http://127.0.0.1:8000.',
+      'Could not reach the prediction server. Please try again in a few moments.',
       { isNetworkError: true }
     )
   }
