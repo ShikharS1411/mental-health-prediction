@@ -1,0 +1,124 @@
+/* ==========================================================================
+   Signal — design tokens
+   A calm, clinical-but-warm dark UI built around the idea of a "signal":
+   the digital pulse of habits (screen time, sleep, study) rendered as an
+   actual waveform whose shape and color encode the predicted score.
+   ========================================================================== */
+
+:root {
+  /* Color */
+  --bg: #0b1120;
+  --bg-alt: #0e1526;
+  --bg-soft: #111a2e;
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-strong: rgba(255, 255, 255, 0.07);
+  --surface-border: rgba(255, 255, 255, 0.09);
+  --surface-border-strong: rgba(255, 255, 255, 0.16);
+
+  --text-primary: #e8edf5;
+  --text-secondary: #aab4c8;
+  --text-muted: #6b7690;
+
+  --accent-teal: #5eead4;
+  --accent-teal-dim: #2dd4bf;
+  --accent-violet: #a78bfa;
+  --accent-gradient: linear-gradient(135deg, #5eead4 0%, #7dd3fc 45%, #a78bfa 100%);
+
+  --risk-low: #5eead4;
+  --risk-moderate: #fbbf24;
+  --risk-high: #fb7185;
+
+  --danger-bg: rgba(251, 113, 133, 0.1);
+  --danger-border: rgba(251, 113, 133, 0.35);
+
+  /* Type */
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Radius / shadow */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --shadow-glow-teal: 0 0 40px rgba(94, 234, 212, 0.18);
+  --shadow-glow-violet: 0 0 40px rgba(167, 139, 250, 0.16);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, select {
+  font-family: inherit;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-border-strong);
+  border-radius: 8px;
+  border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-teal-dim);
+}
+
+/* Focus visibility */
+:focus-visible {
+  outline: 2px solid var(--accent-teal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
